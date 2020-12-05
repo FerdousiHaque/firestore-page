@@ -21,8 +21,7 @@ db.collection('settings').onSnapshot((snapshot) => {
                                         + mobile_text +'"><span>'+ mobile_text +'</span></a>');
 
         // Show About data from firestore
-        $("#aboutSection").append('<h1 class="sectionTitle text-center">ABOUT</h1><p>'
-                                    + doc.data().about +'</p>');
+        $("#about_para").append(doc.data().about);
 
         // Show Address, Email, Mobile No of contact section from firestore
         $("#contact_div").append('<h1>'+doc.data().address+'</h1><h2>'
