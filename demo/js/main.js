@@ -32,6 +32,13 @@ db.collection('settings').onSnapshot((snapshot) => {
                                 + doc.data().fullAddress +'</h2><h2>'
                                 +email_text+'<br>'+mobile_text+'</h2>');
 
+        // Add facebook, twitter, youtube, whatsapp link from firestore
+        $("#testimonials").append("<img src='images/logo-fb.PNG' onclick=window.open('"+doc.data().facebook+'\')>'
+                                + "<img src='images/logo-twit.PNG' onclick=window.open('"+doc.data().twitter+'\')>'
+                                + "<img src='images/logo-yt.PNG' onclick=window.open('"+doc.data().youtube+'\')>'
+                                + "<img src='images/logo-wa.PNG' onclick=window.open('"+doc.data().whatsapp+'\')>');
+                                //+ '<a herf="'+doc.data().whatsapp+'" target="_blank"><img src="images/logo-wa.PNG"></a>');
+
         // Show Copyright Text from firestore
         $("#copyright_text").append(doc.data().copyright);
     });
