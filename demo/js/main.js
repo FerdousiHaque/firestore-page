@@ -77,7 +77,7 @@ db.collection('brands').orderBy('image').onSnapshot((snapshot) => {
        var brand = '<div class="column">'
                        //+ '<div class="card" style="width: 10%;">'
                        + '<img src="images/' 
-                       + doc.data().image + '" alt="Picture of Restaurent" class="img-responsive"></div>';
+                       + doc.data().image + '" alt="Picture of Restaurent"></div>';
 
        $("#brandLogo").append(brand);
         
