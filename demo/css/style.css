@@ -195,6 +195,20 @@ letter-spacing: 3px; font-family: Helvetica, Arial, sans-serif; }
   width: 80%;
 }
 
+#brandSection .row {
+  padding-left: 55px;
+}
+
+#brandSection .row .column {
+  float: left;
+  width: 20%;
+}
+
+#brandSection .row .column img{
+  max-height: 115px;
+  max-width: 210px;
+}
+
 .sectionTitle { 
   padding: 100px 20px 20px 20px; 
   margin: 20px 10px 40px 10px;  
@@ -319,4 +333,17 @@ letter-spacing: 3px; font-family: Helvetica, Arial, sans-serif; }
     width: 1300px;
   }
   
+}
+
+/********** Small devices only **********/
+@media (max-width: 650px) {
+
+  #brandSection .row {
+    padding-left: 20px;
+  }
+  #brandSection .row .column {
+    float: left;
+    width: 50%;
+  }
+
 }

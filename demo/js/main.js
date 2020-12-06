@@ -69,6 +69,21 @@ db.collection('sliders').onSnapshot((snapshot) => {
     });
 });
 
+// Show ALL Brands from firestore
+db.collection('brands').orderBy('image').onSnapshot((snapshot) => {
+    //insertHtml("#main-content", response);
+    snapshot.docs.forEach(doc => {
+
+       var brand = '<div class="column">'
+                       //+ '<div class="card" style="width: 10%;">'
+                       + '<img src="images/' 
+                       + doc.data().image + '" alt="Picture of Restaurent" class="img-responsive"></div>';
+
+       $("#brandLogo").append(brand);
+        
+    });
+});
+
 // Show ALL Products from firestore
 var number = 1; // is used for image & description combination
 db.collection('products').orderBy('image').onSnapshot((snapshot) => {
