@@ -27,8 +27,8 @@
 </div>
 <div id='sitelogo'>
   <img src="images/logo.png" width="280px" height="300px">
-  <div id="banner_section">
-    <!--Show Text of Banner from firestore-->
+  <div>
+    <button id="exploreSite" type="submit" onClick=""><!--Show Text of Banner from firestore--></button>
   </div>
   
 </div>
@@ -121,18 +121,11 @@
 
   <section id="aboutSection">
     <h1 class="sectionTitle text-center">ABOUT</h1> 
-    <p id="about_para"><!-- About Section Text is here from firestore --></p>
+    <p id="about_para"><!-- About Section Text from firestore --></p>
 
-    
-    <!-- <div class="jumbotron"> -->
-      <iframe width="100%" height="500px" src="https://www.youtube.com/embed/6NegFl9p_sE?start=20" 
-      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-      gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <!-- <div class="container">
-            <h1 class="display-4 text-center">COMPANY PROFILE <br>VIDEO</h1>
-        </div> -->
-    <!-- </div> -->
-    
+    <div class="container" id="video_div">
+        <!-- Company Profile Video from firestore -->
+    </div>
   </section>
   <section id="brandSection">
     <h1 class="sectionTitle text-center">OUR BRAND</h1>

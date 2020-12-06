@@ -11,8 +11,7 @@ db.collection('settings').onSnapshot((snapshot) => {
                                     + tittle_section +'</p></span>');
 
         // Show Banner text from firestore
-        $("#banner_section").append('<button id="exploreSite" type="submit" onClick="">'
-                                    + doc.data().banner +'</button>');
+        $("#exploreSite").append(doc.data().banner);
 
         // Show Email and Mobile in a Div from firestore
         var email_text = doc.data().email;
@@ -22,6 +21,11 @@ db.collection('settings').onSnapshot((snapshot) => {
 
         // Show About data from firestore
         $("#about_para").append(doc.data().about);
+
+        // Show Video in iframe from firestore
+        $("#video_div").append('<iframe width="100%" height="500px" src="'+doc.data().video
+        + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;'
+        + 'gyroscope; picture-in-picture" allowfullscreen></iframe>');
 
         // Show Address, Email, Mobile No of contact section from firestore
         $("#contact_div").append('<h1>'+doc.data().address+'</h1><h2>'
