@@ -9,12 +9,12 @@ db.collection('settings').onSnapshot((snapshot) => {
         /* Show Main tittle from firestore
         $("#company_tittle").append('<span class="js-count-particles"><p>'
                                     + tittle_section +'</p></span>');*/
-                                    let span = $("<span></span>");
-                                    $("#company_tittle").append(span);
-                                    let p = $("<p></p>");
-                                    p.text(tittle_section);// you can use the dynamic data here => + doc.data().tittle +
-                                    span.append(p);
-                                    span.addClass("js-particles");
+        let span = $("<span></span>");
+        $("#company_tittle").append(span);
+        let p = $("<p></p>");
+        p.text(tittle_section);
+        span.append(p);
+        span.addClass("js-particles");
 
         // Show Banner text from firestore
         $("#exploreSite").append(doc.data().banner);
