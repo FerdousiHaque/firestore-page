@@ -6,9 +6,15 @@ db.collection('settings').onSnapshot((snapshot) => {
         var tittle_section = doc.data().tittle;
         $("#tittle").append(tittle_section);
 
-        // Show Main tittle from firestore
+        /* Show Main tittle from firestore
         $("#company_tittle").append('<span class="js-count-particles"><p>'
-                                    + tittle_section +'</p></span>');
+                                    + tittle_section +'</p></span>');*/
+                                    let span = $("<span></span>");
+                                    $("#company_tittle").append(span);
+                                    let p = $("<p></p>");
+                                    p.text(tittle_section);// you can use the dynamic data here => + doc.data().tittle +
+                                    span.append(p);
+                                    span.addClass("js-particles");
 
         // Show Banner text from firestore
         $("#exploreSite").append(doc.data().banner);
@@ -41,7 +47,7 @@ db.collection('settings').onSnapshot((snapshot) => {
                                 + "<img src='images/logo-yt.PNG'></a>"
                                 + "<a href='#' onclick=window.open('"+doc.data().whatsapp+'\')>'
                                 + "<img src='images/logo-wa.PNG'></a>");
-                                
+
         // Show Copyright Text from firestore
         $("#copyright_text").append(doc.data().copyright);
     });
@@ -127,3 +133,4 @@ db.collection('services').orderBy('image').onSnapshot((snapshot) => {
         
     });
 });
+
