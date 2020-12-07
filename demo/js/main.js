@@ -135,3 +135,12 @@ db.collection('services').orderBy('image').onSnapshot((snapshot) => {
     });
 });
 
+// Show ALL Services One by One from firestore
+db.collection('clients').onSnapshot((snapshot) => {
+    //insertHtml("#main-content", response);
+    snapshot.docs.forEach(doc => {
+
+       $("#client_para").append(doc.data().details);
+        
+    });
+});
