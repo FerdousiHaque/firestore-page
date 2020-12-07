@@ -14,10 +14,11 @@ db.collection('settings').onSnapshot((snapshot) => {
         let p = $("<p></p>");
         p.text(tittle_section);
         span.append(p);
-        span.addClass("js-particles");
+        //span.addClass("js-particles");
 
         // Show Banner text from firestore
         $("#exploreSite").append(doc.data().banner);
+        //$("#exploreSite").addClass("js-particles");
 
         // Show Email and Mobile in a Div from firestore
         var email_text = doc.data().email;
