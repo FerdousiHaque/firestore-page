@@ -135,7 +135,7 @@ db.collection('services').orderBy('image').onSnapshot((snapshot) => {
     });
 });
 
-// Show ALL Services One by One from firestore
+// Show ALL Clients One by One from firestore
 db.collection('clients').onSnapshot((snapshot) => {
     //insertHtml("#main-content", response);
     snapshot.docs.forEach(doc => {
@@ -144,3 +144,17 @@ db.collection('clients').onSnapshot((snapshot) => {
         
     });
 });
+
+// Add animation in different section
+const particles = document.querySelector("#particles-js");
+const tittle = document.querySelector("#company_tittle");
+const logoImage = document.querySelector("#sitelogo");
+const siteText = document.querySelector("#exploreSite");
+
+// object of animation script
+const t1 = new TimelineMax();
+
+t1.fromTo(particles, 1.2, { x:"-100%" }, { x: "0%", ease: Power2.easeInOut })
+.fromTo(tittle, 1.5, { y:"-100%" }, { y: "0%", ease: Power2.easeInOut })
+.fromTo(logoImage, 1.5, { y:"-40%" }, { y: "0%", ease: Power2.easeInOut }, "-=1.5")
+.fromTo(siteText, 1.5, { y:"-100%" }, { y: "0%", ease: Power2.easeInOut }, "-=1.5");
