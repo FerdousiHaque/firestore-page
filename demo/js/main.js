@@ -85,7 +85,6 @@ db.collection('brands').orderBy('image').onSnapshot((snapshot) => {
     snapshot.docs.forEach(doc => {
 
        var brand = '<div class="column">'
-                       //+ '<div class="card" style="width: 10%;">'
                        + '<img src="images/' 
                        + doc.data().image + '" alt="Picture of Restaurent"></div>';
 
@@ -150,11 +149,27 @@ const particles = document.querySelector("#particles-js");
 const tittle = document.querySelector("#company_tittle");
 const logoImage = document.querySelector("#sitelogo");
 const siteText = document.querySelector("#exploreSite");
+const about = document.querySelector("#aboutSection");
+const brand = document.querySelector("#brandSection");
+const client = document.querySelector("#clientSection");
 
 // object of animation script
 const t1 = new TimelineMax();
 
-t1.fromTo(particles, 1.2, { x:"-100%" }, { x: "0%", ease: Power2.easeInOut })
+t1.fromTo(particles, 1, { x:"-90%" }, { x: "0%", ease: Power2.easeInOut })
 .fromTo(tittle, 1.5, { y:"-100%" }, { y: "0%", ease: Power2.easeInOut })
-.fromTo(logoImage, 1.5, { y:"-40%" }, { y: "0%", ease: Power2.easeInOut }, "-=1.5")
-.fromTo(siteText, 1.5, { y:"-100%" }, { y: "0%", ease: Power2.easeInOut }, "-=1.5");
+.fromTo(logoImage, 1.2, { y:"-40%" }, { y: "0%", ease: Power2.easeInOut })
+.fromTo(siteText, 1.2, { y:"-100%" }, { y: "0%", ease: Power2.easeInOut }, "-=1.2");
+
+// Animation occure when particular section is reached
+scrolledDown = false;
+$(window).scroll(function () {
+var current = $(this).scrollTop();
+
+    // when about section is on view
+    if ($(this).scrollTop() >= (about.offsetWidth-250) && !scrolledDown) {
+        t1.fromTo(about, 1.2, { y:"45%", opacity: 0 }, { y: "0%", opacity: 1 });
+        scrolledDown = true;
+    }
+
+});

@@ -36,7 +36,6 @@ canvas {
   left: 10%;
   font-size: 32px;
   color: white;
-  /*width: 100%;*/
   letter-spacing: 2px;
   font-family: Helvetica, Arial, sans-serif;
   
@@ -45,22 +44,6 @@ canvas {
 .js-particles{
   font-size: 1.1em;
   position: absolute;
-  animation: linear;
-  animation-name: from-left;
-  animation-duration: 2s;
-  -webkit-animation: linear;
-  -webkit-animation-name: from-left;
-  -webkit-animation-duration: 2s;
-}
-/* Tittle appare from left side */
-@-webkit-keyframes from-left {
-  from {
-    transform: translateX(-50%);
-  }
-
-  to {
-    transform: translateX(50%);
-  }
 }
 
 #stats, .count-particles{
@@ -75,7 +58,7 @@ canvas {
   margin-top: -150px;
   margin-left: -140px;  /* half of your logo size should be minus*/
 }
-/*.banner-text {width: 100%;position: absolute;}*/
+
 #exploreSite { background:transparent; font-size: 40px; color: white;
 border-color: transparent; margin-top: 40px; margin-left: -82px;
 letter-spacing: 3px; font-family: Helvetica, Arial, sans-serif;}
@@ -191,7 +174,9 @@ letter-spacing: 3px; font-family: Helvetica, Arial, sans-serif;}
   padding-right: 0px;
   padding-left: 0px;
 }
-
+#aboutSection {
+  opacity: 0;
+}
 #aboutSection .jumbotron {
   box-shadow: 0 0 10px #004030;
   background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg); 
