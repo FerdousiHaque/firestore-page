@@ -1,3 +1,11 @@
+var scroll = document.getElementById("scrollUp");
+
+scroll.addEventListener('click', (e) => { // scroll to top
+    e.preventDefault();
+    $('html, body').animate({scrollTop:0}, 'slow');
+        return false;
+});
+
 db.collection('settings').onSnapshot((snapshot) => {
     //insertHtml("#main-content", response);
     snapshot.docs.forEach(doc => {
@@ -6,19 +14,12 @@ db.collection('settings').onSnapshot((snapshot) => {
         var tittle_section = doc.data().tittle;
         $("#tittle").append(tittle_section);
 
-        /* Show Main tittle from firestore
+        // Show Main tittle from firestore
         $("#company_tittle").append('<span class="js-count-particles"><p>'
-                                    + tittle_section +'</p></span>');*/
-        let span = $("<span></span>");
-        $("#company_tittle").append(span);
-        let p = $("<p></p>");
-        p.text(tittle_section);
-        span.append(p);
-        //span.addClass("js-particles");
-
+                                    + tittle_section +'</p></span>');
+        
         // Show Banner text from firestore
         $("#exploreSite").append(doc.data().banner);
-        //$("#exploreSite").addClass("js-particles");
 
         // Show Email and Mobile in a Div from firestore
         var email_text = doc.data().email;
@@ -164,7 +165,14 @@ t1.fromTo(particles, 1, { x:"-90%" }, { x: "0%", ease: Power2.easeInOut })
 // Animation occure when particular section is reached
 scrolledDown = false;
 $(window).scroll(function () {
-var current = $(this).scrollTop();
+
+    // scrollUp Button appare, after some scrolling
+    var current = $(this).scrollTop();
+    if(current > 250) {
+        document.getElementById("scrollUp").style.display = "block";
+    } else {
+        document.getElementById("scrollUp").style.display = "none";
+    }
 
     // when about section is on view
     if ($(this).scrollTop() >= (about.offsetWidth-250) && !scrolledDown) {
