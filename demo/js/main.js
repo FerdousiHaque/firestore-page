@@ -111,12 +111,8 @@ db.collection('products').orderBy('image').onSnapshot((snapshot) => {
                     + '</div>';
     var image_and_desp_string =       
    '<div class="row">'
-     + (isOdd ? despString : '<div class="col-md-6 col-sm-6 gs_reveal gs_reveal_fromLeft">'
-     + '<img src="images/' + image + '">'
-     + '</div>')  //show value first image then description
-     + (isOdd ? '<div class="col-md-6 col-sm-6 gs_reveal gs_reveal_fromRight">'
-     + '<img src="images/' + image + '">'
-     + '</div>' : despString)   //show value first description then image
+     + (isOdd ? despString : imageString)  //show value first image then description
+     + (isOdd ? imageString : despString)   //show value first description then image
      + '</div>';
 
     $("#product_div").append(image_and_desp_string);
