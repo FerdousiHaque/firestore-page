@@ -260,7 +260,7 @@ letter-spacing: 3px; font-family: Helvetica, Arial, sans-serif;}
   justify-content : center;
   align-items : center;
   padding: 12px 35px;
-  border: 2px solid #5dc8ac;
+  border: 2px solid #145629;
   border-radius: 30px;
   font-size: 16px;
   font-weight: 600;
@@ -270,7 +270,7 @@ letter-spacing: 3px; font-family: Helvetica, Arial, sans-serif;}
 
 #productSection .product-btn:hover {
   color: white;
-  background: #5dc8ac; }
+  background: #145629; }
 
 #serviceSection .container .row .column {
   text-align : center;
@@ -348,9 +348,16 @@ letter-spacing: 3px; font-family: Helvetica, Arial, sans-serif;}
   padding-right: 30px;
 }
 
+
+.gs_reveal {
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0s;
+}
+
 #scrollUp {
   display: none;
-  background: #000000;
+  background: #145629;
   bottom: 20px;
   color: #ffffff;
   font-size: 20px;
@@ -368,7 +375,32 @@ letter-spacing: 3px; font-family: Helvetica, Arial, sans-serif;}
   #scrollUp:hover {
     background: #ffffff; ;
     color: #163A1A; }
- 
+
+/* Top Progress Bar */
+progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 15px;
+  border: none;
+  background: transparent;
+  z-index: 1000;
+}
+progress::-webkit-progress-bar {
+  background: transparent;
+}
+progress::-webkit-progress-value {
+  background: linear-gradient(to left, #db38b5,#01b3e3,#25ce7b,#fdc741,#ff6b01,#fc4236);
+  background-attachment: fixed;
+}
+progress::-moz-progress-bar {
+  background: linear-gradient(to left, #db38b5,#01b3e3,#25ce7b,#fdc741,#ff6b01,#fc4236);
+  background-attachment: fixed;
+}
+
 /* END FOOTER */
 
 /********** Large devices only **********/

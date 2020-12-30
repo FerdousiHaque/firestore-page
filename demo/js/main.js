@@ -82,7 +82,7 @@ db.collection('sliders').onSnapshot((snapshot) => {
 
 // Show ALL Brands from firestore
 db.collection('brands').orderBy('image').onSnapshot((snapshot) => {
-    //insertHtml("#main-content", response);
+   // insertHtml("#main-content", response);
     snapshot.docs.forEach(doc => {
 
        var brand = '<div class="column">'
@@ -97,13 +97,13 @@ db.collection('brands').orderBy('image').onSnapshot((snapshot) => {
 // Show ALL Products from firestore
 var number = 1; // is used for image & description combination
 db.collection('products').orderBy('image').onSnapshot((snapshot) => {
-    //insertHtml("#main-content", response);
+   // insertHtml("#main-content", response);
     snapshot.docs.forEach(doc => {
 
     var isOdd = number % 2 == 1;
     var desp = doc.data().description;
     var image = doc.data().image;
-    var imageString = '<div class="col-md-6 col-sm-6">'
+    var imageString = '<div class="col-md-6 col-sm-6 ">'
                     + '<img src="images/' + image + '">'
                     + '</div>';
     var despString = '<div class="col-md-6 col-sm-6 productDetails">'
@@ -111,8 +111,12 @@ db.collection('products').orderBy('image').onSnapshot((snapshot) => {
                     + '</div>';
     var image_and_desp_string =       
    '<div class="row">'
-     + (isOdd ? despString : imageString)  //show value first image then description
-     + (isOdd ? imageString : despString)   //show value first description then image
+     + (isOdd ? despString : '<div class="col-md-6 col-sm-6 gs_reveal gs_reveal_fromLeft">'
+     + '<img src="images/' + image + '">'
+     + '</div>')  //show value first image then description
+     + (isOdd ? '<div class="col-md-6 col-sm-6 gs_reveal gs_reveal_fromRight">'
+     + '<img src="images/' + image + '">'
+     + '</div>' : despString)   //show value first description then image
      + '</div>';
 
     $("#product_div").append(image_and_desp_string);
@@ -122,7 +126,7 @@ db.collection('products').orderBy('image').onSnapshot((snapshot) => {
 
 // Show ALL Services One by One from firestore
 db.collection('services').orderBy('image').onSnapshot((snapshot) => {
-    //insertHtml("#main-content", response);
+   // insertHtml("#main-content", response);
     snapshot.docs.forEach(doc => {
 
        var serviceString = '<div class="col-md-3 column">'
@@ -168,7 +172,7 @@ $(window).scroll(function () {
 
     // scrollUp Button appare, after some scrolling
     var current = $(this).scrollTop();
-    if(current > 250) {
+    if(current > 350) {
         document.getElementById("scrollUp").style.display = "block";
     } else {
         document.getElementById("scrollUp").style.display = "none";
@@ -179,5 +183,55 @@ $(window).scroll(function () {
         t1.fromTo(about, 1.2, { y:"45%", opacity: 0 }, { y: "0%", opacity: 1 });
         scrolledDown = true;
     }
+    // for sticky navigaton
+    //stickyNav();*/
 
 });
+
+function animateFrom(elem, direction) {
+    direction = direction | 1;
+    
+    var x = 0,
+        y = direction * 100;
+    if(elem.classList.contains("gs_reveal_fromLeft")) {
+      x = -100;
+      y = 0;
+    } else if(elem.classList.contains("gs_reveal_fromRight")) {
+      x = 100;
+      y = 0;
+    }
+    gsap.fromTo(elem, {x: x, y: y, autoAlpha: 0}, {
+      duration: 3, 
+      x: 0,
+      y: 0, 
+      autoAlpha: 1, 
+      ease: "expo", 
+      overwrite: "auto"
+    });
+  }
+  
+  function hide(elem) {
+    gsap.set(elem, {autoAlpha: 0});
+  }
+  
+  //document.addEventListener("DOMContentLoaded", function() {
+    //$(document).ready(function(){
+    gsap.registerPlugin(ScrollTrigger);
+    
+    gsap.to('progress', {
+        value: 100,
+        ease: 'none',
+        scrollTrigger: { scrub: 0.8 }
+      });
+    
+    gsap.utils.toArray(".gs_reveal").forEach(function(elem) {
+      hide(elem); // assure that the element is hidden when scrolled into view
+      
+      ScrollTrigger.create({
+        trigger: elem,
+        onEnter: function() { animateFrom(elem) }, 
+        onEnterBack: function() { animateFrom(elem, -1) },
+        onLeave: function() { hide(elem) } // assure that the element is hidden when scrolled into view
+      });
+    });
+  //});
